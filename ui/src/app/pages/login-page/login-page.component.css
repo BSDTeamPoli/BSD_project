@@ -1,0 +1,19 @@
+.login-content p,
+.login-content h1 {
+  text-align: center;
+}
+
+/* Forgot Password */
+.forgot-password {
+  margin-top: 1rem;
+}
+
+/* Don't Have Account */
+.dont-have-account {
+  margin-top: 0.5rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}

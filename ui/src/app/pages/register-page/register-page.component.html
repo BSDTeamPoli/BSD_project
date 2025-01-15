@@ -1,0 +1,314 @@
+<app-page-container [title]="'Create new account'" [authenticated]="false">
+  <div class="register-content">
+    <h1>Register</h1>
+    <form
+      class="mx-auto p-4 w-100 mw-1000"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="username"
+            >Username</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            formControlName="username"
+            id="username"
+            autocomplete="username"
+            placeholder="Enter username"
+            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+          />
+          <span
+            *ngIf="submitted && f['username'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['username'].errors['required']">
+              Username is required!
+            </span>
+          </span>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="fullname"
+            >Full Name</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            formControlName="fullname"
+            id="fullname"
+            autocomplete="fullname"
+            placeholder="Enter full name"
+            [ngClass]="{ 'is-invalid': submitted && f['fullname'].errors }"
+          />
+          <span
+            *ngIf="submitted && f['fullname'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['fullname'].errors['required']">
+              Full name is required!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="email">Email</label>
+          <input
+            class="form-control"
+            type="email"
+            formControlName="email"
+            id="email"
+            autocomplete="email"
+            placeholder="Enter email"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+          />
+          <span *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <span *ngIf="f['email'].errors['required']">
+              Email is required!
+            </span>
+            <span *ngIf="f['email'].errors['email']">
+              Email is not in correct format!
+            </span>
+          </span>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="birthdate"
+            >Birthdate</label
+          >
+          <input
+            class="form-control"
+            type="date"
+            formControlName="birthdate"
+            id="birthdate"
+            autocomplete="birthdate"
+            placeholder="Enter birthdate"
+            [ngClass]="{ 'is-invalid': submitted && f['birthdate'].errors }"
+          />
+          <span
+            *ngIf="submitted && f['birthdate'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['birthdate'].errors['required']">
+              Birthdate is required!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="occupation"
+            >Occupation</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            formControlName="occupation"
+            id="occupation"
+            autocomplete="occupation"
+            placeholder="Enter occupation"
+            [ngClass]="{ 'is-invalid': submitted && f['occupation'].errors }"
+          />
+          <span
+            *ngIf="submitted && f['occupation'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['occupation'].errors['required']">
+              Occupation is required!
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="monthlyIncome"
+            >Monthly Income</label
+          >
+          <input
+            class="form-control"
+            type="number"
+            formControlName="monthlyIncome"
+            id="monthlyIncome"
+            autocomplete="monthlyIncome"
+            placeholder="Enter monthly income"
+            [ngClass]="{
+              'is-invalid': submitted && f['monthlyIncome'].errors
+            }"
+          />
+          <span
+            *ngIf="submitted && f['monthlyIncome'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['monthlyIncome'].errors['required']">
+              Monthly income is required!
+            </span>
+            <span *ngIf="f['monthlyIncome'].errors['min']">
+              Monthly income cannot be less than 0!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="double-field w-45 mw-500">
+          <div class="form-group minfit">
+            <label class="form-label text-uppercase" for="existingCredit"
+              >Existing Credit</label
+            >
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="checkbox"
+                id="existingCredit"
+                formControlName="existingCredit"
+              />
+              <label class="form-check-label" for="existingCredit">Yes</label>
+            </div>
+          </div>
+          <div class="form-group fill" *ngIf="f['existingCredit'].value">
+            <label class="form-label text-uppercase" for="existingCreditAmount"
+              >Amount</label
+            >
+            <input
+              class="form-control"
+              type="number"
+              formControlName="existingCreditAmount"
+              id="existingCreditAmount"
+              autocomplete="existingCreditAmount"
+              placeholder="Enter amount"
+              [ngClass]="{
+                'is-invalid': submitted && f['existingCreditAmount'].errors
+              }"
+            />
+            <span
+              *ngIf="submitted && f['existingCreditAmount'].errors"
+              class="invalid-feedback"
+            >
+              <span *ngIf="f['existingCreditAmount'].errors['required']">
+                Credit amount is required!
+              </span>
+              <span *ngIf="f['existingCreditAmount'].errors['min']">
+                Credit amount cannot be less than 0!
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="double-field w-45 mw-500">
+          <div class="form-group minfit">
+            <label class="form-label text-uppercase" for="monthlyInstallment"
+              >Monthly Installment</label
+            >
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="checkbox"
+                id="monthlyInstallment"
+                formControlName="monthlyInstallment"
+              />
+              <label class="form-check-label" for="monthlyInstallment"
+                >Yes</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group fill" *ngIf="f['monthlyInstallment'].value">
+            <label
+              class="form-label text-uppercase"
+              for="monthlyInstallmentAmount"
+              >Amount</label
+            >
+            <input
+              class="form-control"
+              type="number"
+              formControlName="monthlyInstallmentAmount"
+              id="monthlyInstallmentAmount"
+              autocomplete="monthlyInstallmentAmount"
+              placeholder="Enter amount"
+              [ngClass]="{
+                'is-invalid': submitted && f['monthlyInstallmentAmount'].errors
+              }"
+            />
+            <span
+              *ngIf="submitted && f['monthlyInstallmentAmount'].errors"
+              class="invalid-feedback"
+            >
+              <span *ngIf="f['monthlyInstallmentAmount'].errors['required']">
+                Monthly installment is required!
+              </span>
+              <span *ngIf="f['monthlyInstallmentAmount'].errors['min']">
+                Monthly installment cannot be less than 0!
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="password"
+            >Password</label
+          >
+          <input
+            class="form-control"
+            type="password"
+            formControlName="password"
+            id="password"
+            autocomplete="new-password"
+            placeholder="Enter password"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+          />
+          <span
+            *ngIf="submitted && f['password'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['password'].errors['required']">
+              Password is required!
+            </span>
+            <span *ngIf="f['password'].errors['minLength']">
+              Password is too short!
+            </span>
+          </span>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="confirmPassword"
+            >Confirm Password</label
+          >
+          <input
+            class="form-control"
+            type="password"
+            formControlName="confirmPassword"
+            id="confirmPassword"
+            autocomplete="new-password"
+            placeholder="Confirm password"
+            [ngClass]="{
+              'is-invalid': submitted && f['confirmPassword'].errors
+            }"
+          />
+          <span
+            *ngIf="submitted && f['confirmPassword'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['confirmPassword'].errors['required']">
+              Confirm password is required!
+            </span>
+            <span *ngIf="f['confirmPassword'].errors['mustMatch']">
+              Confirm password does not match!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="button-container">
+        <button
+          [disabled]="loading"
+          type="submit"
+          class="btn btn-dark minw-150 mw-250 w-50 font-weight-bold"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+    <div class="form-text">
+      <p class="already-registered">
+        Already registered? <a routerLink="/login">Log in</a>
+      </p>
+    </div>
+  </div>
+</app-page-container>

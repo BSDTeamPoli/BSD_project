@@ -1,0 +1,47 @@
+<!-- Header -->
+<app-header [title]="title" [endpoint]="headerEndpoint"></app-header>
+
+<div class="button-placeholder">
+  <!-- Hamburger Menu Icon (visible only on small screens) -->
+  <div class="hamburger-menu" *ngIf="showHamburgerMenu" (click)="toggleMenu()">
+    <svg viewBox="0 0 100 80" width="30" height="30">
+      <rect width="100" height="10"></rect>
+      <rect y="30" width="100" height="10"></rect>
+      <rect y="60" width="100" height="10"></rect>
+    </svg>
+  </div>
+
+  <!-- Button Container (hidden on small screens) -->
+  <div class="button-container" *ngIf="!showHamburgerMenu && authenticated">
+    <button class="btn btn-dark" (click)="navigate('/chooseLoan')">
+      Choose loan
+    </button>
+    <button class="btn btn-dark" (click)="navigate('/myResult')">
+      My Result
+    </button>
+    <button class="btn btn-dark" (click)="navigate('/myProfile')">
+      My Profile
+    </button>
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
+</div>
+
+<!-- Mobile Menu (visible when hamburger menu is clicked) -->
+<div class="mobile-menu" *ngIf="isMenuOpen && showHamburgerMenu">
+  <button class="btn btn-dark" (click)="navigate('/chooseLoan')">
+    Choose loan
+  </button>
+  <button class="btn btn-dark" (click)="navigate('/myResult')">
+    My Result
+  </button>
+  <button class="btn btn-dark" (click)="navigate('/myProfile')">
+    My Profile
+  </button>
+  <button class="btn btn-danger" (click)="logout()">Logout</button>
+  <button class="btn btn-danger" (click)="toggleMenu()">Close</button>
+</div>
+
+<!-- Content Container -->
+<div class="content-container">
+  <ng-content></ng-content>
+</div>

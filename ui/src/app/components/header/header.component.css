@@ -1,0 +1,62 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7rem;
+  background: linear-gradient(to right, #4c4b4b, black);
+  padding: 0 4rem;
+  font-family: 'Montserrat', sans-serif; /* Added Montserrat font */
+}
+
+.title-container {
+  height: 100%;
+  display: flex;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase; /* Convert title to uppercase */
+}
+
+.image {
+  height: 5rem; /* Adjust as needed */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .header-container {
+    height: 5rem; /* Smaller height for tablets */
+    padding: 0 2rem; /* Reduced padding */
+  }
+
+  .title {
+    font-size: 2rem; /* Smaller font size for tablets */
+  }
+
+  .image {
+    height: 3.5rem; /* Smaller image for tablets */
+  }
+}
+
+@media (max-width: 580px) {
+  .header-container {
+    height: 4rem; /* Smaller height for phones */
+    padding: 0 1rem; /* Minimal padding */
+  }
+
+  .title {
+    display: none; /* Hide title on phones */
+  }
+
+  .image {
+    height: 2.5rem; /* Smaller image for phones */
+  }
+}

@@ -1,0 +1,304 @@
+<app-page-container [title]="'Profile'" [authenticated]="true">
+  <app-delete-dialog></app-delete-dialog>
+  <div class="my-profile-content">
+    <h1>My information</h1>
+    <form
+      class="mx-auto p-4 w-100 mw-1000"
+      [formGroup]="myProfileForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="username"
+            >Username</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="text"
+            formControlName="username"
+            id="username"
+            autocomplete="username"
+            placeholder="Enter username"
+            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['username'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['username'].errors['required']">
+              Username is required!
+            </span>
+          </span>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="fullname"
+            >Full Name</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="text"
+            formControlName="fullname"
+            id="fullname"
+            autocomplete="fullname"
+            placeholder="Enter full name"
+            [ngClass]="{ 'is-invalid': submitted && f['fullname'].errors }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['fullname'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['fullname'].errors['required']">
+              Full name is required!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="email">Email</label>
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="email"
+            formControlName="email"
+            id="email"
+            autocomplete="email"
+            placeholder="Enter email"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+            [readonly]="!isEditMode"
+          />
+          <span *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <span *ngIf="f['email'].errors['required']">
+              Email is required!
+            </span>
+            <span *ngIf="f['email'].errors['email']">
+              Email is not in correct format!
+            </span>
+          </span>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="birthdate"
+            >Birthdate</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="date"
+            formControlName="birthdate"
+            id="birthdate"
+            autocomplete="birthdate"
+            placeholder="Enter birthdate"
+            [ngClass]="{ 'is-invalid': submitted && f['birthdate'].errors }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['birthdate'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['birthdate'].errors['required']">
+              Birthdate is required!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="occupation"
+            >Occupation</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="text"
+            formControlName="occupation"
+            id="occupation"
+            autocomplete="occupation"
+            placeholder="Enter occupation"
+            [ngClass]="{ 'is-invalid': submitted && f['occupation'].errors }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['occupation'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['occupation'].errors['required']">
+              Occupation is required!
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="monthlyIncome"
+            >Monthly Income</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="number"
+            formControlName="monthlyIncome"
+            id="monthlyIncome"
+            autocomplete="monthlyIncome"
+            placeholder="Enter monthly income"
+            [ngClass]="{
+              'is-invalid': submitted && f['monthlyIncome'].errors
+            }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['monthlyIncome'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['monthlyIncome'].errors['required']">
+              Monthly income is required!
+            </span>
+            <span *ngIf="f['monthlyIncome'].errors['min']">
+              Monthly income cannot be less than 0!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="double-field w-45 mw-500">
+          <div class="form-group minfit">
+            <label class="form-label text-uppercase" for="existingCredit"
+              >Existing Credit</label
+            >
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="checkbox"
+                id="existingCredit"
+                formControlName="existingCredit"
+                [readonly]="!isEditMode"
+              />
+              <label class="form-check-label" for="existingCredit">Yes</label>
+            </div>
+          </div>
+          <div class="form-group fill" *ngIf="f['existingCredit'].value">
+            <label class="form-label text-uppercase" for="existingCreditAmount"
+              >Amount</label
+            >
+            <input
+              [class.form-control-plaintext]="!isEditMode"
+              [class.form-control]="isEditMode"
+              type="number"
+              formControlName="existingCreditAmount"
+              id="existingCreditAmount"
+              autocomplete="existingCreditAmount"
+              placeholder="Enter amount"
+              [ngClass]="{
+                'is-invalid': submitted && f['existingCreditAmount'].errors
+              }"
+              [readonly]="!isEditMode"
+            />
+            <span
+              *ngIf="submitted && f['existingCreditAmount'].errors"
+              class="invalid-feedback"
+            >
+              <span *ngIf="f['existingCreditAmount'].errors['required']">
+                Credit amount is required!
+              </span>
+              <span *ngIf="f['existingCreditAmount'].errors['min']">
+                Credit amount cannot be less than 0!
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="double-field w-45 mw-500">
+          <div class="form-group minfit">
+            <label class="form-label text-uppercase" for="monthlyInstallment"
+              >Monthly Installment</label
+            >
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="checkbox"
+                id="monthlyInstallment"
+                formControlName="monthlyInstallment"
+                [disabled]="isDisabled"
+                [readonly]="!isEditMode"
+              />
+              <label class="form-check-label" for="monthlyInstallment"
+                >Yes</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group fill" *ngIf="f['monthlyInstallment'].value">
+            <label
+              class="form-label text-uppercase"
+              for="monthlyInstallmentAmount"
+              >Amount</label
+            >
+            <input
+              [class.form-control-plaintext]="!isEditMode"
+              [class.form-control]="isEditMode"
+              type="number"
+              formControlName="monthlyInstallmentAmount"
+              id="monthlyInstallmentAmount"
+              autocomplete="monthlyInstallmentAmount"
+              placeholder="Enter amount"
+              [ngClass]="{
+                'is-invalid': submitted && f['monthlyInstallmentAmount'].errors
+              }"
+              [readonly]="!isEditMode"
+            />
+            <span
+              *ngIf="submitted && f['monthlyInstallmentAmount'].errors"
+              class="invalid-feedback"
+            >
+              <span *ngIf="f['monthlyInstallmentAmount'].errors['required']">
+                Monthly installment is required!
+              </span>
+              <span *ngIf="f['monthlyInstallmentAmount'].errors['min']">
+                Monthly installment cannot be less than 0!
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <!-- Edit Button (shown when not in edit mode) -->
+        <button
+          *ngIf="!isEditMode"
+          type="button"
+          class="btn btn-dark minw-150 mw-250 w-50 font-weight-bold"
+          (click)="enterEditMode()"
+        >
+          Edit
+        </button>
+        <button
+          *ngIf="isEditMode"
+          [disabled]="loading"
+          type="button"
+          class="btn btn-danger minw-150 mw-250 w-50 font-weight-bold"
+          (click)="deleteMode()"
+        >
+          Delete
+        </button>
+        <button
+          *ngIf="isEditMode"
+          type="button"
+          class="btn btn-dark minw-150 mw-250 w-50 font-weight-bold"
+          (click)="cancelEditMode()"
+        >
+          Cancel
+        </button>
+
+        <button
+          *ngIf="isEditMode"
+          [disabled]="loading"
+          type="submit"
+          class="btn btn-dark minw-150 mw-250 w-50 font-weight-bold"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</app-page-container>

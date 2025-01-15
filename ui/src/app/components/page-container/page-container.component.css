@@ -1,0 +1,105 @@
+/* Background for the entire page */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(to right, #525df8, #cb69d6);
+}
+
+.button-placeholder {
+    height: 3rem;
+}
+
+/* Button Container */
+.button-container {
+    height: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.2rem;
+    align-items: center;
+    padding-right: 6rem;
+    padding-bottom: 1px;
+}
+
+.auth-button:hover {
+    background: #ff6b81;
+}
+
+/* Content Container */
+.content-container {
+    min-height: calc(100vh - 10rem);
+    /* Full height minus header and button container */
+    width: calc(100% - 3rem);
+    /* Full width with margin */
+    margin-right: 3rem;
+    padding: 2rem;
+    padding-top: 3rem;
+    background: white;
+    border-radius: 0 3rem 0 0;
+    height: max-content;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .content-container {
+        margin-right: 0;
+        width: 100%;
+        border-radius: 0;
+        min-height: calc(100vh - 8rem);
+    }
+
+    .button-container {
+        padding-right: 0rem;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 580px) {
+    .content-container {
+        min-height: calc(100vh - 7rem);
+    }
+}
+
+/* Hide the button container on small screens */
+@media (max-width: 700px) {
+    .button-container {
+        display: none;
+    }
+
+    /* Show the hamburger menu */
+    .hamburger-menu {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 2rem;
+        padding-top: 5px;
+        align-items: center;
+        cursor: pointer;
+        height: 3rem;
+    }
+
+    /* Style the mobile menu */
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 5rem;
+        right: 1rem;
+        z-index: 1000;
+    }
+}
+
+/* Hide the hamburger menu on larger screens */
+@media (min-width: 701px) {
+    .hamburger-menu {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+}

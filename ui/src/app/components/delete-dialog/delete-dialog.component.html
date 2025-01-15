@@ -1,0 +1,30 @@
+<div class="modal show" #deleteModal>
+  <div class="modal-dialog">
+    <div class="modal-content greyshadow">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Account</h5>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete account?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-dark"
+          (click)="closeModal()"
+          [disabled]="loading"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteItem()"
+          [disabled]="loading"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

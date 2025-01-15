@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+
+html,
+body {
+  height: 100%;
+  font-family: 'Aileron', 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Aileron', sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1rem;
+  color: #8f8e8e;
+}
+
+/* Link */
+a {
+  color: #004aad;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #002a6d;
+  text-decoration: underline;
+}
+
+.is-invalid {
+  border-left: 5px solid #D9534F;
+}
+
+.invalid-feedback {
+  display: flex !important;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+/* Custom button */
+button {
+  cursor: pointer;
+  min-width: 150px;
+  width: fit-content;
+  padding: 10px;
+}
+
+.btn-danger {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.btn-dark {
+  background-color: #000000;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.btn-dark:hover {
+  background-color: #333333;
+}
+
+.form-label {
+  margin-bottom: 0.25rem;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-45 {
+  width: 45%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.minw-100 {
+  min-width: 100px;
+}
+
+.minw-150 {
+  min-width: 150px;
+}
+
+.mw-250 {
+  max-width: 250px;
+}
+
+.mw-500 {
+  max-width: 500px;
+}
+
+.mw-1000 {
+  max-width: 1000px;
+}
+
+.fill {
+  flex-grow: 1;
+}
+
+.minfit {
+  min-width: fit-content;
+}
+
+.greyshadow {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.purpleshadow {
+  box-shadow: rgba(82, 93, 248, 0.4) -5px 5px, rgba(82, 93, 248, 0.3) -10px 10px, rgba(82, 93, 248, 0.2) -15px 15px, rgba(82, 93, 248, 0.1) -20px 20px, rgba(82, 93, 248, 0.05) -25px 25px;
+}
