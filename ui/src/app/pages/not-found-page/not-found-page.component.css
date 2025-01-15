@@ -4,16 +4,18 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
 }
 
 /* Fancy 404 */
 .fancy-404 {
-  font-size: 10rem; /* Large size */
+  font-size: 10rem;
+  /* Large size */
   font-weight: bold;
-  color: #525df8; /* Gradient color */
-  background: linear-gradient(to right, #525df8, #cb69d6);
+  color: var(--purple-color);
+  /* Gradient color */
+  background: linear-gradient(to right, var(--purple-color), var(--pink-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 1rem 0;

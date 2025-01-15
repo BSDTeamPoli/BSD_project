@@ -1,5 +1,5 @@
 export interface Loan {
     id: number;
-    loan: string;
+    name: string;
     description: string;
 }

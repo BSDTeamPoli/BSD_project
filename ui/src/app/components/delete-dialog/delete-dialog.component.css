@@ -24,7 +24,7 @@
 }
 
 .modal-header {
-    background: linear-gradient(to right, #4c4b4b, black);
+    background: linear-gradient(to right, var(--dark-color), black);
     color: white;
     text-transform: uppercase;
     padding: 10px 20px;

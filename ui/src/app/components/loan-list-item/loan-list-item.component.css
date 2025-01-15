@@ -1,0 +1,19 @@
+.loan-list-item {
+    background-color: #eaeaea;
+    border-radius: 1rem;
+    padding: 10px 20px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    transition: transform 0.3s ease;
+    /* Smooth transition for scaling */
+}
+
+.loan-list-item:hover,
+.loan-list-item.selected {
+    transform: scale(1.05);
+}
+
+.loan-list-item p {
+    margin: 0;
+}

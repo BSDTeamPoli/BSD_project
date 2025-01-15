@@ -2,22 +2,22 @@
   "loans": [
     {
       "id": 1,
-      "loan": "Mortgage loan",
+      "name": "Mortgage loan",
       "description": "A loan used to purchase or refinance a home, where the property serves as collateral."
     },
     {
       "id": 2,
-      "loan": "Auto loan",
+      "name": "Auto loan",
       "description": "A loan specifically for purchasing a vehicle, often secured by the vehicle itself."
     },
     {
       "id": 3,
-      "loan": "Personal loan",
+      "name": "Personal loan",
       "description": "An unsecured loan that can be used for various personal expenses, typically without collateral."
     },
     {
       "id": 4,
-      "loan": "Credit card",
+      "name": "Credit card",
       "description": "A revolving line of credit that allows users to borrow up to a certain limit for purchases and cash advances."
     }
   ]

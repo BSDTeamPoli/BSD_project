@@ -1,5 +1,22 @@
 <app-page-container [title]="'Choose your loan'" [authenticated]="true">
   <div class="loan-content">
-    <h1>todo</h1>
+    <div class="list-container">
+      <div *ngFor="let loan of loans">
+        <app-loan-list-item
+          [id]="loan.id"
+          [name]="loan.name"
+          [description]="loan.description"
+          [isSelected]="loan.id === selectedLoanId"
+          (clicked)="onPickLoan($event)"
+        ></app-loan-list-item>
+      </div>
+    </div>
+    <div class="form-container">
+      <app-loan-form
+        [selectedLoanId]="selectedLoanId"
+        [name]="selectedLoanName"
+        [description]="selectedLoanDescription"
+      ></app-loan-form>
+    </div>
   </div>
 </app-page-container>

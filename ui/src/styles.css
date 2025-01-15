@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'ngx-toastr/toastr';
 
+:root {
+  --purple-color: #525df8;
+  --pink-color: #cb69d6;
+  --dark-color: #4c4b4b;
+  --red-color: #4b1805;
+}
+
 html,
 body {
   height: 100%;
@@ -11,6 +18,11 @@ h1 {
   font-family: 'Aileron', sans-serif;
   font-weight: bold;
   font-size: 3rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  color: var(--red-color);
 }
 
 p {
@@ -133,4 +145,8 @@ button {
 
 .purpleshadow {
   box-shadow: rgba(82, 93, 248, 0.4) -5px 5px, rgba(82, 93, 248, 0.3) -10px 10px, rgba(82, 93, 248, 0.2) -15px 15px, rgba(82, 93, 248, 0.1) -20px 20px, rgba(82, 93, 248, 0.05) -25px 25px;
+}
+
+.pinkshadow {
+  box-shadow: rgba(203, 105, 214, 0.4) 5px 5px, rgba(203, 105, 214, 0.3) 10px 10px, rgba(203, 105, 214, 0.2) 15px 15px, rgba(203, 105, 214, 0.1) 20px 20px, rgba(203, 105, 214, 0.05) 25px 25px;
 }

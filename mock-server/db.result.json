@@ -2,14 +2,11 @@
   "results": [
     {
       "id": 1234,
-      "username": "Catalin Popescu",
-      "primaryCcy": "USD",
-      "secondaryCcy": "EUR",
-      "rate": "0.86",
-      "action": "SELL",
-      "notional": 1000000,
-      "tenor": "1M",
-      "date": 1537511800526
+      "loanname": "Catalin Popescu",
+      "date": "USD",
+      "interest": "EUR",
+      "amounttopay": "0.86",
+      "result": "SELL"
     },
     {
       "id": 212,
