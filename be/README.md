@@ -19,9 +19,19 @@ The `authService` handles all user authentication and account management functio
 }
 ```
 
+**Example Response:**
+
+```json
+{
+  "id": "number",
+  "username": "string",
+  "token": "string"
+}
+```
+
 **Response:**
 
-- **200 OK**: Returns a JWT token on successful authentication.
+- **200 OK**: Returns a token on successful authentication.
 - **401 Unauthorized**: Invalid credentials.
 
 ---
@@ -219,7 +229,7 @@ The `resultsService` provides details about loan results.
 
 ### 1. Get Results List
 
-**Endpoint:** `GET ${resultsApi}/results/`
+**Endpoint:** `GET ${resultsApi}/results/:userId`
 
 **Description:** Fetches the list of loan results.
 
@@ -243,7 +253,7 @@ The `resultsService` provides details about loan results.
     "amounttopay": "number",
     "result": "FAILED"
   }
-]t
+]
 ```
 
 - **200 OK**: Returns the list of results.
