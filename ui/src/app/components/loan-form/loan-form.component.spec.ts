@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoanFormComponent } from './loan-form.component';
+import { AppModule } from '../../app.module';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../../services/authentication.service';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('LoanFormComponent', () => {
   let component: LoanFormComponent;
@@ -8,7 +12,9 @@ describe('LoanFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoanFormComponent]
+      imports: [ToastrModule.forRoot(), AppModule],
+      declarations: [LoanFormComponent],
+      providers: [provideHttpClient(), ToastrService, AuthenticationService]
     })
     .compileComponents();
 

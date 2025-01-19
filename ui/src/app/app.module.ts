@@ -32,12 +32,12 @@ import { ResultListItemComponent } from './components/result-list-item/result-li
 @NgModule({
   declarations: [
     AppComponent,
+    PageContainerComponent,
     LoginPageComponent,
     NotFoundPageComponent,
     RegisterPageComponent,
     LoanPageComponent,
     HeaderComponent,
-    PageContainerComponent,
     MyProfilePageComponent,
     MyResultPageComponent,
     DeleteDialogComponent,
