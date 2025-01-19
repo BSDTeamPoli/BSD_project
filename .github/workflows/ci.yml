@@ -1,0 +1,29 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  frontend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout actions code
+        uses: actions/checkout@v3
+      
+      - name: Set up node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      
+      - name: Install dependencies for the angular application
+        run: |
+          cd ui
+          npm install
+
+      - name: Run frontend tests
+        run: |
+          cd ui
+          npm test
