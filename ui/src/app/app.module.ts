@@ -26,6 +26,8 @@ import { MyResultPageComponent } from './pages/my-result-page/my-result-page.com
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { LoanListItemComponent } from './components/loan-list-item/loan-list-item.component';
 import { LoanFormComponent } from './components/loan-form/loan-form.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ResultListItemComponent } from './components/result-list-item/result-list-item.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { LoanFormComponent } from './components/loan-form/loan-form.component';
     DeleteDialogComponent,
     LoanListItemComponent,
     LoanFormComponent,
+    LoaderComponent,
+    ResultListItemComponent,
   ],
   imports: [
     BrowserModule,

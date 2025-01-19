@@ -16,14 +16,9 @@ export const backendUrl = {
   },
   loanService: {
     getLoans: `${loanApi}/loans`,
-    saveLoan: `${loanApi}/loan`,
+    calculateLoan: `${loanApi}/loan/calculate`,
   },
-  fxTradeService: {
-    getTransactions: `${loanApi}/transactions`,
-    saveTransaction: `${loanApi}/transactions`,
+  resultService: {
+    getResults: `${resultApi}/results`,
   },
-  quoteService: {
-    getCurrencies: `${loanApi}/currencies`,
-    getFxRate: `${loanApi}/fx-rate`
-  }
 }

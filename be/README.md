@@ -243,6 +243,7 @@ The `resultsService` provides details about loan results.
     "date": "string",
     "interest": "number",
     "amounttopay": "number",
+    "amounttopaymonthly": "number",
     "result": "SUCCESS"
   },
   {
@@ -251,6 +252,7 @@ The `resultsService` provides details about loan results.
     "date": "string",
     "interest": "number",
     "amounttopay": "number",
+    "amounttopaymonthly": "number",
     "result": "FAILED"
   }
 ]

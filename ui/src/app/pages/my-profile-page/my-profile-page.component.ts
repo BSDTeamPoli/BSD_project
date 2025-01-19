@@ -14,7 +14,7 @@ import { DeleteDialogComponent } from '../../components/delete-dialog/delete-dia
   styleUrl: './my-profile-page.component.css'
 })
 export class MyProfilePageComponent implements OnInit, AfterViewInit {
-
+  fetchingUser = true;
   @ViewChild(DeleteDialogComponent)
   deleteDialogComponent!: DeleteDialogComponent;
 
@@ -72,7 +72,10 @@ export class MyProfilePageComponent implements OnInit, AfterViewInit {
     const currentUser = this.authService.getCurrentUser();
     this.userService.getUser(currentUser.id ?? 0).subscribe((data: any) => {
       this.myProfileForm.patchValue(data);
+      this.fetchingUser = false;
     }, (error: any) => {
+      this.fetchingUser = false;
+
       console.error('Error:', error);
       if (error.status === 404) {
         this.toastr.error('User data not found');

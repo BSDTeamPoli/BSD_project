@@ -2,7 +2,7 @@
   <h4>{{ name }}</h4>
   <p>{{ description }}</p>
   <form [formGroup]="loanForm" (ngSubmit)="onSubmit()">
-    <div class="fields-container">
+    <div class="fields-container mb-3">
       <div class="form-group mb-3 mt-3">
         <label class="form-label text-uppercase" for="amount">Amount</label>
         <input
@@ -50,7 +50,13 @@
         </span>
       </div>
     </div>
-
-    <button type="submit" class="btn btn-dark">Calculate</button>
+    <div class="button-container">
+      <button type="button" class="btn btn-danger" (click)="onCancel()">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-dark" [disabled]="loading">
+        Calculate
+      </button>
+    </div>
   </form>
 </div>

@@ -1,6 +1,7 @@
 <app-page-container [title]="'Profile'" [authenticated]="true">
   <app-delete-dialog></app-delete-dialog>
-  <div class="my-profile-content">
+  <app-loader *ngIf="fetchingUser"></app-loader>
+  <div class="my-profile-content" *ngIf="!fetchingUser">
     <h1>My information</h1>
     <form
       class="mx-auto p-4 w-100 mw-1000"

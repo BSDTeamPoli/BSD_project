@@ -13,3 +13,13 @@
 
     gap: 1.8rem;
 }
+
+@media (max-width: 900px) {
+    .loan-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hide {
+        display: none;
+    }
+}

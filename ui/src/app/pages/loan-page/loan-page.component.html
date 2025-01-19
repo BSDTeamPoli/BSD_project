@@ -1,6 +1,7 @@
 <app-page-container [title]="'Choose your loan'" [authenticated]="true">
-  <div class="loan-content">
-    <div class="list-container">
+  <app-loader *ngIf="fetchingLoans"></app-loader>
+  <div class="loan-content" *ngIf="!fetchingLoans">
+    <div class="list-container" [ngClass]="{ hide: selectedLoanId !== null }">
       <div *ngFor="let loan of loans">
         <app-loan-list-item
           [id]="loan.id"
@@ -16,6 +17,7 @@
         [selectedLoanId]="selectedLoanId"
         [name]="selectedLoanName"
         [description]="selectedLoanDescription"
+        (clicked)="onDeselectLoan()"
       ></app-loan-form>
     </div>
   </div>

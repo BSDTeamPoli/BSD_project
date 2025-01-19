@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
     this.authenticationService.logout();
 
     this.returnUrl =
-      this.route.snapshot.queryParams['returnUrl'] || '/loan';
+      this.route.snapshot.queryParams['returnUrl'] || '/chooseLoan';
   }
 
   // Convenience getter for easy access to form fields
