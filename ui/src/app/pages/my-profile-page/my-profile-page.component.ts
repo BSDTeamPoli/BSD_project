@@ -50,6 +50,8 @@ export class MyProfilePageComponent implements OnInit, AfterViewInit {
         existingCreditAmount: [''],
         monthlyInstallment: [false],
         monthlyInstallmentAmount: [''],
+        priorLoanDefaults: [false],
+        authorizationToCheckCredit: [false],
       },
       {
         validator: [
