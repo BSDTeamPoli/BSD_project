@@ -28,6 +28,7 @@ import { LoanListItemComponent } from './components/loan-list-item/loan-list-ite
 import { LoanFormComponent } from './components/loan-form/loan-form.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ResultListItemComponent } from './components/result-list-item/result-list-item.component';
+import { EmploymentPageComponent } from './pages/employment-page/employment-page.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ResultListItemComponent } from './components/result-list-item/result-li
     LoanFormComponent,
     LoaderComponent,
     ResultListItemComponent,
+    EmploymentPageComponent,
   ],
   imports: [
     BrowserModule,

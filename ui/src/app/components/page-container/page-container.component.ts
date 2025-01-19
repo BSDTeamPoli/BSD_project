@@ -44,6 +44,6 @@ export class PageContainerComponent {
 
   // Check screen width and update showHamburgerMenu
   checkScreenWidth() {
-    this.showHamburgerMenu = window.innerWidth <= 700;
+    this.showHamburgerMenu = window.innerWidth <= 900;
   }
 }
