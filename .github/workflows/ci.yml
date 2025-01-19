@@ -47,4 +47,35 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: frontend-build
-          path: ui/dist/ui/browser
+          path: ui/dist/ui
+
+  frontend-docker-image:
+    name: Build Frontend Docker Image
+    needs: frontend-tests-and-artifact-creation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout actions code
+        uses: actions/checkout@v3
+
+      - name: Download Frontend Built Assets
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend-build
+      
+      - name: Create Docker Image using the UI assets
+        run: |
+          mkdir cicd/frontend/assets
+          sudo cp -r /home/runner/work/BSD_project/BSD_project/browser/* cicd/frontend/assets
+          cd cicd/frontend
+          docker build -t frontend-app .
+
+      - name: Authenticate to google cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: SSH into VM
+        run: |
+          docker save frontend-app -o frontend-app.tar
+          gcloud compute scp --project=ninth-osprey-448320-g1 --zone=europe-west3-c frontend-app.tar my-vm:/tmp/frontend-app.tar
+          gcloud compute ssh --project=ninth-osprey-448320-g1 --zone=europe-west3-c my-vm --command="sudo docker load -i /tmp/frontend-app.tar && sudo docker run -d -p 80:4200 frontend-app"
