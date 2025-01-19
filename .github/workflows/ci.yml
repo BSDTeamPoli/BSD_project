@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  frontend-tests:
+  frontend-tests-and-artifact-creation:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout actions code
@@ -33,6 +33,18 @@ jobs:
       - name: Run frontend tests
         run: |
           cd ui
-          npm test
+          npm run test-headless
         env:
+          CI: true
           DISPLAY: :99
+
+      - name: Build frontend
+        run: |
+          cd ui
+          npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-build
+          path: ui/dist/ui/browser

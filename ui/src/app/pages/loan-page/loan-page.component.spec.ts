@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoanPageComponent } from './loan-page.component';
+import { AppModule } from '../../app.module';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('LoanPageComponent', () => {
   let component: LoanPageComponent;
@@ -8,7 +10,9 @@ describe('LoanPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoanPageComponent]
+      imports: [AppModule],
+      declarations: [LoanPageComponent],
+      providers: [provideHttpClient()]
     })
     .compileComponents();
 

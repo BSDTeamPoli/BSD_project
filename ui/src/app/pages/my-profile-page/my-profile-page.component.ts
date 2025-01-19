@@ -70,7 +70,7 @@ export class MyProfilePageComponent implements OnInit, AfterViewInit {
 
   getUserDetails() {
     const currentUser = this.authService.getCurrentUser();
-    this.userService.getUser(currentUser.id ?? 0).subscribe((data: any) => {
+    this.userService.getUser(currentUser?.id ?? 0).subscribe((data: any) => {
       this.myProfileForm.patchValue(data);
       this.fetchingUser = false;
     }, (error: any) => {
