@@ -49,13 +49,15 @@ The `authService` handles all user authentication and account management functio
   "username": "string",
   "fullname": "string",
   "email": "string",
-  "birthdate": "string (ISO format)",
+  "birthdate": "string (ISO format, e.g., 1990-01-01)",
   "occupation": "string",
   "monthlyIncome": "number | null",
   "existingCredit": "boolean",
   "existingCreditAmount": "number | null",
   "monthlyInstallment": "boolean",
   "monthlyInstallmentAmount": "number | null",
+  "priorLoanDefaults": "boolean",
+  "authorizationToCheckCredit": "boolean",
   "password": "string"
 }
 ```
@@ -104,7 +106,9 @@ The `userService` handles user profile management.
   "existingCredit": "boolean",
   "existingCreditAmount": "number | null",
   "monthlyInstallment": "boolean",
-  "monthlyInstallmentAmount": "number | null"
+  "monthlyInstallmentAmount": "number | null",
+  "priorLoanDefaults": "boolean",
+  "authorizationToCheckCredit": "boolean"
 }
 ```
 
@@ -260,3 +264,60 @@ The `resultsService` provides details about loan results.
 
 - **200 OK**: Returns the list of results.
 - **500 Internal Server Error**: Error occurred while retrieving the results.
+
+## Employment Service
+
+The `employmentService` handles employment details management.
+
+### 1. Get Employment Details
+
+**Endpoint:** `GET ${employmentService}/employment/:id`
+
+**Description:** Fetches employment details for a specific user by their ID.
+
+**Response:**
+
+- **200 OK**: Returns employment details.
+
+  **Example Response:**
+
+  ```json
+  {
+    "employmentType": "string",
+    "monthlyNetIncome": "number | null",
+    "currentEmployer": "string",
+    "industry": "string",
+    "startOfEmployment": "string (ISO format)",
+    "endOfEmployment": "string (ISO format) | null"
+  }
+  ```
+
+- **404 Not Found**: Employment details not found.
+- **500 Internal Server Error**: Error occurred while retrieving employment details.
+
+---
+
+### 2. Update Employment Details
+
+**Endpoint:** `PUT ${employmentService}/employment/:id`
+
+**Description:** Updates employment details for a specific user by their ID.
+
+**Request Body:**
+
+```json
+{
+  "employmentType": "string",
+  "monthlyNetIncome": "number | null",
+  "currentEmployer": "string",
+  "industry": "string",
+  "startOfEmployment": "string (ISO format)",
+  "endOfEmployment": "string (ISO format) | null"
+}
+```
+
+**Response:**
+
+- **200 OK**: Employment details updated successfully.
+- **404 Not Found**: Employment details not found.
+- **500 Internal Server Error**: Error occurred while updating employment details.
