@@ -241,6 +241,76 @@
           </div>
         </div>
       </div>
+
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="priorLoanDefaults"
+            >Prior Loan Defaults</label
+          >
+          <div class="grid-container">
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="radio"
+                id="priorLoanDefaultsYes"
+                [value]="true"
+                formControlName="priorLoanDefaults"
+              />
+              <label class="form-check-label" for="priorLoanDefaultsYes"
+                >Yes</label
+              >
+            </div>
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="radio"
+                id="priorLoanDefaultsNo"
+                [value]="false"
+                formControlName="priorLoanDefaults"
+              />
+              <label class="form-check-label" for="priorLoanDefaultsNo"
+                >No</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label
+            class="form-label text-uppercase"
+            for="authorizationToCheckCredit"
+            >Autorisation to check credit score</label
+          >
+          <div class="grid-container">
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="radio"
+                id="authorizationToCheckCreditYes"
+                [value]="true"
+                formControlName="authorizationToCheckCredit"
+              />
+              <label
+                class="form-check-label"
+                for="authorizationToCheckCreditYes"
+                >Yes</label
+              >
+            </div>
+            <div class="form-check form-check">
+              <input
+                class="form-check-input checkbox"
+                type="radio"
+                id="authorizationToCheckCreditNo"
+                [value]="false"
+                formControlName="authorizationToCheckCredit"
+              />
+              <label class="form-check-label" for="authorizationToCheckCreditNo"
+                >No</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="form-row-double">
         <div class="form-group w-45 mw-500">
           <label class="form-label text-uppercase" for="password"

@@ -10,6 +10,8 @@ export class UserRegister {
     existingCreditAmount: number | null = null;
     monthlyInstallment: boolean = false;
     monthlyInstallmentAmount: number | null = null;
+    priorLoanDefaults: boolean = false;
+    authorizationToCheckCredit: boolean = false;
     password: string = '';
 }
 
@@ -24,4 +26,6 @@ export class UserEdit {
     existingCreditAmount: number | null = null;
     monthlyInstallment: boolean = false;
     monthlyInstallmentAmount: number | null = null;
+    priorLoanDefaults: boolean = false;
+    authorizationToCheckCredit: boolean = false;
 }

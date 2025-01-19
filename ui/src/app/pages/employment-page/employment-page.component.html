@@ -1,0 +1,201 @@
+<app-page-container [title]="'Employment details'" [authenticated]="true">
+  <app-delete-dialog></app-delete-dialog>
+  <app-loader *ngIf="fetchingUser"></app-loader>
+  <div class="employment-content" *ngIf="!fetchingUser">
+    <h1>Employment information</h1>
+    <form
+      class="mx-auto p-4 w-100 mw-1000"
+      [formGroup]="employmentForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="employmentType"
+            >Employment type</label
+          >
+          <select
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            formControlName="employmentType"
+            id="employmentType"
+            [ngClass]="{
+              'is-invalid': submitted && f['employmentType'].errors
+            }"
+            [disabled]="!isEditMode"
+          >
+            <option value="">Select employment type</option>
+            <option value="Permanent">Permanent</option>
+            <option value="Temporary">Temporary</option>
+          </select>
+          <span
+            *ngIf="submitted && f['employmentType'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['employmentType'].errors['required']">
+              Type is required!
+            </span>
+          </span>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="monthlyNetIncome"
+            >Monthly NetIncome</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="number"
+            formControlName="monthlyNetIncome"
+            id="monthlyNetIncome"
+            autocomplete="monthlyNetIncome"
+            placeholder="Enter monthly NetIncome"
+            [ngClass]="{
+              'is-invalid': submitted && f['monthlyNetIncome'].errors
+            }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['monthlyNetIncome'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['monthlyNetIncome'].errors['required']">
+              Monthly Net Income is required!
+            </span>
+            <span *ngIf="f['monthlyNetIncome'].errors['min']">
+              Monthly Net Income cannot be less than 0!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="employer"
+            >Current employer name</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="text"
+            formControlName="employer"
+            id="employer"
+            autocomplete="employer"
+            placeholder="Enter employer name"
+            [ngClass]="{ 'is-invalid': submitted && f['employer'].errors }"
+            [readonly]="!isEditMode"
+          />
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="industry"
+            >Industry/job sector</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="text"
+            formControlName="industry"
+            id="industry"
+            autocomplete="industry"
+            placeholder="Enter industry section"
+            [ngClass]="{ 'is-invalid': submitted && f['industry'].errors }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['industry'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['industry'].errors['required']">
+              Industry is required!
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="startOfEmployment"
+            >Start of employment</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="date"
+            formControlName="startOfEmployment"
+            id="startOfEmployment"
+            autocomplete="startOfEmployment"
+            placeholder="Enter startOfEmployment"
+            [ngClass]="{
+              'is-invalid': submitted && f['startOfEmployment'].errors
+            }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['startOfEmployment'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['startOfEmployment'].errors['required']">
+              Date is required!
+            </span>
+          </span>
+        </div>
+        <div class="form-group w-45 mw-500">
+          <label class="form-label text-uppercase" for="endOfEmployment"
+            >End of employment</label
+          >
+          <input
+            [class.form-control-plaintext]="!isEditMode"
+            [class.form-control]="isEditMode"
+            type="date"
+            formControlName="endOfEmployment"
+            id="endOfEmployment"
+            autocomplete="endOfEmployment"
+            placeholder="Enter endOfEmployment"
+            [ngClass]="{
+              'is-invalid': submitted && f['endOfEmployment'].errors
+            }"
+            [readonly]="!isEditMode"
+          />
+          <span
+            *ngIf="submitted && f['endOfEmployment'].errors"
+            class="invalid-feedback"
+          >
+            <span *ngIf="f['endOfEmployment'].errors['required']">
+              Date is required!
+            </span>
+
+            <span *ngIf="f['endOfEmployment'].errors['less']">
+              End date cannot be less than start date!
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <!-- Edit Button (shown when not in edit mode) -->
+        <button
+          *ngIf="!isEditMode"
+          type="button"
+          class="btn btn-dark minw-150 mw-250 w-50 font-weight-bold"
+          (click)="enterEditMode()"
+        >
+          Edit
+        </button>
+
+        <button
+          *ngIf="isEditMode"
+          type="button"
+          class="btn btn-dark minw-150 mw-250 w-50 font-weight-bold"
+          (click)="cancelEditMode()"
+        >
+          Cancel
+        </button>
+
+        <button
+          *ngIf="isEditMode"
+          [disabled]="loading"
+          type="submit"
+          class="btn btn-dark minw-150 mw-250 w-50 font-weight-bold"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</app-page-container>

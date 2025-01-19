@@ -37,6 +37,8 @@ export class RegisterPageComponent implements OnInit {
         existingCreditAmount: [''],
         monthlyInstallment: [false],
         monthlyInstallmentAmount: [''],
+        priorLoanDefaults: [false],
+        authorizationToCheckCredit: [false],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
       },
@@ -48,7 +50,6 @@ export class RegisterPageComponent implements OnInit {
         ]
       }
     );
-
   }
 
   // Convenience getter for easy access to form fields

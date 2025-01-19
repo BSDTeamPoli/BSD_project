@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -51,6 +50,8 @@ export class MyProfilePageComponent implements OnInit, AfterViewInit {
         existingCreditAmount: [''],
         monthlyInstallment: [false],
         monthlyInstallmentAmount: [''],
+        priorLoanDefaults: [false],
+        authorizationToCheckCredit: [false],
       },
       {
         validator: [
