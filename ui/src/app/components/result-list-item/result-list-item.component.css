@@ -1,0 +1,37 @@
+.result-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background-color: var(--gray-color);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    min-width: 300px;
+    width: fit-content;
+}
+
+.result {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+}
+
+.failed {
+    color: red;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.15rem;
+}
+
+p {
+    margin: 0;
+}
+
+.right {
+    text-align: right;
+}

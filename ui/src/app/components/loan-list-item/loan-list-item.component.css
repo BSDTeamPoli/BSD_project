@@ -1,5 +1,5 @@
 .loan-list-item {
-    background-color: #eaeaea;
+    background-color: var(--gray-color);
     border-radius: 1rem;
     padding: 10px 20px;
     max-width: 500px;

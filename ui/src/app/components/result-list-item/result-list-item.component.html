@@ -1,1 +1,12 @@
-<p>result-list-item works!</p>
+<div class="result-list-item middleshadow">
+  <h4 class="header">{{ loanname }} {{ formatedDate(date) }}</h4>
+  <p class="result" [ngClass]="getResultClass()">{{ result.toUpperCase() }}</p>
+  <div class="grid">
+    <p>INTEREST</p>
+    <p class="right">{{ interest }} %</p>
+    <p>AMOUNT TO PAY</p>
+    <p class="right">{{ amounttopay }}</p>
+    <p>AMOUNT TO PAY MONTHLY</p>
+    <p class="right">{{ amounttopaymonthly }}</p>
+  </div>
+</div>

@@ -4,5 +4,6 @@ export interface Result {
     date: string;
     interest: number;
     amounttopay: number;
+    amounttopaymonthly: number;
     result: string;
 }

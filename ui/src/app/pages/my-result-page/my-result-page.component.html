@@ -1,6 +1,17 @@
 <app-page-container [title]="'My result'" [authenticated]="true">
   <app-loader *ngIf="fetchingResults"></app-loader>
   <div class="result-content" *ngIf="!fetchingResults">
-    <h1>todo</h1>
+    <div class="list-container">
+      <div *ngFor="let r of results">
+        <app-result-list-item
+          [loanname]="r.loanname"
+          [date]="r.date"
+          [result]="r.result"
+          [interest]="r.interest"
+          [amounttopay]="r.amounttopay"
+          [amounttopaymonthly]="r.amounttopaymonthly"
+        />
+      </div>
+    </div>
   </div>
 </app-page-container>
