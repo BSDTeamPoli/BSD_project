@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmploymentPageComponent } from './employment-page.component';
+import { AppModule } from '../../app.module';
+import { provideHttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../../services/authentication.service';
+import { EmploymentService } from '../../services/employment.service';
 
 describe('EmploymentPageComponent', () => {
   let component: EmploymentPageComponent;
@@ -8,9 +13,12 @@ describe('EmploymentPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmploymentPageComponent]
+      imports: [AppModule],
+      declarations: [EmploymentPageComponent],
+      providers: [provideHttpClient(), ToastrService, AuthenticationService, EmploymentService]
+
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EmploymentPageComponent);
     component = fixture.componentInstance;

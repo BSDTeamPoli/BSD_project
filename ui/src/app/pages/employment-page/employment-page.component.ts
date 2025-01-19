@@ -52,7 +52,7 @@ export class EmploymentPageComponent {
 
   getUserDetails() {
     const currentUser = this.authService.getCurrentUser();
-    this.employmentService.getEmploymentDetails(currentUser.id ?? 0).subscribe((data: any) => {
+    this.employmentService.getEmploymentDetails(currentUser?.id ?? 0).subscribe((data: any) => {
       this.employmentForm.patchValue(data);
       this.fetchingUser = false;
     }, (error: any) => {
