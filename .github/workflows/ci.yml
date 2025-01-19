@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - 'feat/cicd-**'
   pull_request:
 
 jobs:
@@ -18,6 +19,12 @@ jobs:
         with:
           node-version: 20
       
+      - name: Configure "headless" google chrome on the runner instance
+        run: |
+          sudo apt-get -y install xorg xvfb gtk2-engines-pixbuf
+          sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
+          Xvfb -ac :99 -screen 0 1280x1024x16 &
+
       - name: Install dependencies for the angular application
         run: |
           cd ui
@@ -27,3 +34,5 @@ jobs:
         run: |
           cd ui
           npm test
+        env:
+          DISPLAY: :99
