@@ -80,7 +80,7 @@ jobs:
           gcloud compute scp --project=ninth-osprey-448320-g1 --zone=europe-west3-c frontend-app.tar my-vm:/tmp/frontend-app.tar
           gcloud compute ssh --project=ninth-osprey-448320-g1 --zone=europe-west3-c my-vm --command="
             if [ \"\$(sudo docker ps -q)\" ]; then
-              sudo docker rm -f \$(docker ps -q)
+              sudo docker rm -f \$(sudo docker ps -q)
             else
               echo \"No running containers to stop or remove.\"
             fi
