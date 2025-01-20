@@ -22,26 +22,31 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String role = "ROLE_USER";
-
-    @Column(nullable = false)
-    private String firstName;
-
-    @Column(nullable = false)
-    private String lastName;
-
-    private String occupation;
+    private String fullname;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     private LocalDate birthdate;
 
+    private String occupation;
+
     private BigDecimal monthlyIncome;
 
     private Boolean existingCredit;
 
-    private BigDecimal installmentAmount;
+    private BigDecimal existingCreditAmount;  // Matches Angular model
+
+    private Boolean monthlyInstallment;  // Matches Angular model
+
+    private BigDecimal monthlyInstallmentAmount;  // Matches Angular model
+
+    private Boolean priorLoanDefaults;  // Matches Angular model
+
+    private Boolean authorizationToCheckCredit;
+
+    @Column(nullable = false)
+    private String role = "ROLE_USER";
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Employment employment;
@@ -79,22 +84,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getOccupation() {
@@ -137,19 +126,59 @@ public class User {
         this.existingCredit = existingCredit;
     }
 
-    public BigDecimal getInstallmentAmount() {
-        return installmentAmount;
-    }
-
-    public void setInstallmentAmount(BigDecimal installmentAmount) {
-        this.installmentAmount = installmentAmount;
-    }
-
     public Employment getEmployment() {
         return employment;
     }
 
     public void setEmployment(Employment employment) {
         this.employment = employment;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public BigDecimal getExistingCreditAmount() {
+        return existingCreditAmount;
+    }
+
+    public void setExistingCreditAmount(BigDecimal existingCreditAmount) {
+        this.existingCreditAmount = existingCreditAmount;
+    }
+
+    public Boolean getMonthlyInstallment() {
+        return monthlyInstallment;
+    }
+
+    public void setMonthlyInstallment(Boolean monthlyInstallment) {
+        this.monthlyInstallment = monthlyInstallment;
+    }
+
+    public BigDecimal getMonthlyInstallmentAmount() {
+        return monthlyInstallmentAmount;
+    }
+
+    public void setMonthlyInstallmentAmount(BigDecimal monthlyInstallmentAmount) {
+        this.monthlyInstallmentAmount = monthlyInstallmentAmount;
+    }
+
+    public Boolean getPriorLoanDefaults() {
+        return priorLoanDefaults;
+    }
+
+    public void setPriorLoanDefaults(Boolean priorLoanDefaults) {
+        this.priorLoanDefaults = priorLoanDefaults;
+    }
+
+    public Boolean getAuthorizationToCheckCredit() {
+        return authorizationToCheckCredit;
+    }
+
+    public void setAuthorizationToCheckCredit(Boolean authorizationToCheckCredit) {
+        this.authorizationToCheckCredit = authorizationToCheckCredit;
     }
 }

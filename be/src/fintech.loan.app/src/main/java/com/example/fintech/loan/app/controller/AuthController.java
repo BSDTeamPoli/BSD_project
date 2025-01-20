@@ -27,23 +27,58 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody Map<String, Object> request) {
         try {
+            // Extract required fields
             String username = (String) request.get("username");
             String password = (String) request.get("password");
-            String firstName = (String) request.get("firstName");
-            String lastName = (String) request.get("lastName");
+            String fullname = (String) request.get("fullname");
             String email = (String) request.get("email");
             String occupation = (String) request.get("occupation");
-            LocalDate birthdate = request.get("birthdate") != null ? LocalDate.parse((String) request.get("birthdate")) : null;
-            BigDecimal monthlyIncome = request.get("monthlyIncome") != null ? new BigDecimal(request.get("monthlyIncome").toString()) : null;
-            Boolean existingCredit = request.get("existingCredit") != null ? Boolean.valueOf(request.get("existingCredit").toString()) : null;
-            BigDecimal installmentAmount = request.get("installmentAmount") != null ? new BigDecimal(request.get("installmentAmount").toString()) : null;
-            String role = (String) request.get("role");
 
-            User user = userService.registerUser(username, password, firstName, lastName, email, occupation, birthdate,
-                    monthlyIncome, existingCredit, installmentAmount, role);
+            // Handle optional fields safely
+            LocalDate birthdate = (request.get("birthdate") != null)
+                    ? LocalDate.parse(request.get("birthdate").toString())
+                    : null;
+
+            BigDecimal monthlyIncome = (request.get("monthlyIncome") != null)
+                    ? new BigDecimal(request.get("monthlyIncome").toString())
+                    : null;
+
+            Boolean existingCredit = (request.get("existingCredit") != null)
+                    ? Boolean.parseBoolean(request.get("existingCredit").toString())
+                    : null;
+
+            BigDecimal existingCreditAmount = (request.get("existingCreditAmount") != null)
+                    ? new BigDecimal(request.get("existingCreditAmount").toString())
+                    : null;
+
+            Boolean monthlyInstallment = (request.get("monthlyInstallment") != null)
+                    ? Boolean.parseBoolean(request.get("monthlyInstallment").toString())
+                    : null;
+
+            BigDecimal monthlyInstallmentAmount = (request.get("monthlyInstallmentAmount") != null)
+                    ? new BigDecimal(request.get("monthlyInstallmentAmount").toString())
+                    : null;
+
+            Boolean priorLoanDefaults = (request.get("priorLoanDefaults") != null)
+                    ? Boolean.parseBoolean(request.get("priorLoanDefaults").toString())
+                    : null;
+
+            Boolean authorizationToCheckCredit = (request.get("authorizationToCheckCredit") != null)
+                    ? Boolean.parseBoolean(request.get("authorizationToCheckCredit").toString())
+                    : null;
+
+            // Call the service to register the user
+            User user = userService.registerUser(username, password, fullname, email, occupation, birthdate,
+                    monthlyIncome, existingCredit, existingCreditAmount, monthlyInstallment,
+                    monthlyInstallmentAmount, priorLoanDefaults, authorizationToCheckCredit);
+
+            // Log saved user to confirm persistence
+            System.out.println("User successfully registered: " + user.getUsername());
+
             return ResponseEntity.ok(Map.of("message", "User registered successfully", "user", user));
+
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid request: " + e.getMessage()));
         }
     }
 
@@ -86,7 +121,7 @@ public class AuthController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         // Get the authenticated user’s details
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

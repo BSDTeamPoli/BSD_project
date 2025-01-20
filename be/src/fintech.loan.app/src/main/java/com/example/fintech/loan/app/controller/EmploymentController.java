@@ -19,7 +19,7 @@ public class EmploymentController {
         this.employmentService = employmentService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getEmployment() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();

@@ -8,13 +8,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/result")
+@RequestMapping("/loan")
 public class ResultController {
 
     @Autowired
     private ResultService resultService;
 
-    @PostMapping("/add")
+    @PostMapping("/calculate")
     public Result createResult(@RequestBody Result request) {
         // Get the authenticated user's username
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

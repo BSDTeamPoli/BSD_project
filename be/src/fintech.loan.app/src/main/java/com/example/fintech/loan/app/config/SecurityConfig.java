@@ -26,14 +26,24 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/user/login").permitAll()
+                        .requestMatchers("/user/register").permitAll()
                         .requestMatchers("/user/authenticate").permitAll()
                         .requestMatchers("/user/change-password").authenticated()
                         .requestMatchers("/user/").authenticated()
-                        .requestMatchers("/employment/").authenticated()
-                        .requestMatchers("/result/add").authenticated()
+                        .requestMatchers("/employment/**").permitAll()
+                        .requestMatchers("/loans/**").permitAll()
+                        .requestMatchers("/loan/**").permitAll()
+                        .requestMatchers("/result/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .cors(cors -> cors.configurationSource(request -> {
+                    var config = new org.springframework.web.cors.CorsConfiguration();
+                    config.addAllowedOrigin("http://localhost:4200");
+                    config.addAllowedMethod("*");
+                    config.addAllowedHeader("*");
+                    config.setAllowCredentials(true);
+                    return config;
+                }))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
