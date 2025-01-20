@@ -86,3 +86,50 @@ jobs:
             fi
           "
           gcloud compute ssh --project=ninth-osprey-448320-g1 --zone=europe-west3-c my-vm --command="sudo docker load -i /tmp/frontend-app.tar && sudo docker run -d -p 80:4200 frontend-app"
+
+  build-backend:
+    name: Build backend
+    needs: frontend-docker-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
+
+      # - name: Build and test
+      #   working-directory: be/src/fintech.loan.app
+      #   run: mvn clean test
+
+      - name: Package application
+        working-directory: be/src/fintech.loan.app
+        run: mvn clean package -DskipTests=true
+
+      - name: Build Docker image
+        run: |
+          mv be/src/fintech.loan.app/target/*.jar cicd/be/
+          cd cicd/be
+          docker build -t fintech-loan-app:latest .
+
+      - name: Authenticate to google cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: SSH into VM
+        run: |
+          docker save fintech-loan-app -o fintech-loan-app.tar
+          gcloud compute scp --project=ninth-osprey-448320-g1 --zone=europe-west3-c fintech-loan-app.tar my-vm:/tmp/fintech-loan-app.tar
+          gcloud compute ssh --project=ninth-osprey-448320-g1 --zone=europe-west3-c my-vm --command="sudo docker load -i /tmp/fintech-loan-app.tar && sudo docker run -d -p 8200:8200 fintech-loan-app"
