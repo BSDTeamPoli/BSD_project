@@ -34,9 +34,9 @@ export class RegisterPageComponent implements OnInit {
         occupation: ['', Validators.required],
         monthlyIncome: ['', [Validators.required, Validators.min(0)]],
         existingCredit: [false],
-        existingCreditAmount: [''],
+        existingCreditAmount: [0.0],
         monthlyInstallment: [false],
-        monthlyInstallmentAmount: [''],
+        monthlyInstallmentAmount: [0.0],
         priorLoanDefaults: [false],
         authorizationToCheckCredit: [false],
         password: ['', [Validators.required, Validators.minLength(6)]],
@@ -112,14 +112,18 @@ export class RegisterPageComponent implements OnInit {
   // Event handlers ------------------------------------------------
   onSubmit() {
     this.submitted = true;
+
     // Exit function if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
 
     this.loading = true;
+    const formData = { ...this.registerForm.value };
+    delete formData.confirmPassword;
+
     this.userService
-      .register(this.registerForm.value)
+      .register(formData) // Send modified form data without confirmPassword
       .pipe(first())
       .subscribe(
         (data: any) => {

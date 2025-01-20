@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -57,7 +57,7 @@ import { EmploymentPageComponent } from './pages/employment-page/employment-page
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [provideHttpClient(), UserService, AuthenticationService, AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  providers: [provideHttpClient(withInterceptorsFromDi()), UserService, AuthenticationService, AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
